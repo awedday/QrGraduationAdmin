@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "QR Code";
+}
+
+<h2>QR Code</h2>
+@using (Html.BeginForm("ChangeQRText", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="newText">Новый текст QR-кода:</label>
+        <input type="text" id="newText" name="newText" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить текст QR-кода</button>
+}
+
+<div>
+    <img src="@Url.Action("GetQRCode", "Home")" alt="QR Code">
+</div>
+<div>
+    <form method="post" action="@Url.Action("SaveQRCode", "Home")">
+        <button type="submit" class="btn btn-primary">Сохранить QR-код</button>
+    </form>
+</div>
+
+@if (ViewBag.QRCodeImagePath != null)
+{
+    <div>
+        <h3>Сохраненный QR-код:</h3>
+        <img src="@ViewBag.QRCodeImagePath" alt="Saved QR Code">
+    </div>
+}

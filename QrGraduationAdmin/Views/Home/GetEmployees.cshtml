@@ -1,0 +1,45 @@
+﻿@model QrGraduationAdmin.Models.Employee
+@{
+    Layout = "_Layout"; ViewBag.Title = "Get Users by Id";
+}
+
+<h2>Get Employees by Id <a asp-action="Index" class="btn btn-sm btn-primary">Back</a></h2>
+<h3>@ViewBag.StatusCode</h3>
+<form asp-action="GetEmployees" asp-controller="Home">
+    <div class="form-group">
+        <label for="id">Id:</label>
+        <input class="form-control"  name="id" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Get Employee</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <h2>Employee</h2>
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>IdEmployee</th>
+                <th>FirstNameEmployee</th>
+                <th>SecondNameEmployee</th>
+                <th>MiddleNameEmployee</th>
+                <th>MailEmployee</th>
+                <th>PasswordEmployee</th>
+                <th>PhoneEmployee</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.IdEmployee</td>
+                <td>@Model.FirstNameEmployee</td>
+                <td>@Model.SecondNameEmployee</td>
+                <td>@Model.MiddleNameEmployee</td>
+                <td>@Model.MailEmployee</td>
+                <td>@Model.PasswordEmployee</td>
+                <td>@Model.PhoneEmployee</td>
+            </tr>
+        </tbody>
+    </table>
+}

@@ -1,0 +1,71 @@
+﻿@model QrGraduationAdmin.Models.Employee
+@{
+    Layout = "_Layout"; ViewBag.Title = "Update a User";
+}
+
+<h2>Update a Employee <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="IdEmployee"></label>
+        <input class="form-control" asp-for="IdEmployee" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstNameEmployee"></label>
+        <input class="form-control" asp-for="FirstNameEmployee" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SecondNameEmployee"></label>
+        <input class="form-control" asp-for="SecondNameEmployee" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleNameEmployee"></label>
+        <input class="form-control" asp-for="MiddleNameEmployee" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MailEmployee"></label>
+        <input class="form-control" asp-for="MailEmployee" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PasswordEmployee"></label>
+        <input class="form-control" asp-for="PasswordEmployee" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneEmployee"></label>
+        <input class="form-control" asp-for="PhoneEmployee" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+    </div>
+</form>
+
+@if (ViewBag.Result == "Success")
+{
+    @if (Model != null)
+    {
+        <h2>Employee</h2>
+        <table class="table table-sm table-striped table-bordered m-2">
+            <thead>
+                <tr>
+                    <th>IdEmployee</th>
+                    <th>FirstNameEmployee</th>
+                    <th>SecondNameEmployee</th>
+                    <th>MiddleNameEmployee</th>
+                    <th>MailEmployee</th>
+                    <th>PasswordEmployee</th>
+                    <th>PhoneEmployee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.IdEmployee</td>
+                    <td>@Model.FirstNameEmployee</td>
+                    <td>@Model.SecondNameEmployee</td>
+                    <td>@Model.MiddleNameEmployee</td>
+                    <td>@Model.MailEmployee</td>
+                    <td>@Model.PasswordEmployee</td>
+                    <td>@Model.PhoneEmployee</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+}

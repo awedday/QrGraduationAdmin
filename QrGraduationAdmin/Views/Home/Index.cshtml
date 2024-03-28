@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QrGraduationAdmin.Models.Employee>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout"; ViewBag.Title = "All Users";
+}
+
+<h2>Все пользователи</h2>
+<a asp-action="AddEmployee" class="btn btn-sm btn-primary">Добавить пользователя</a>
+<a asp-action="SearchHistory" asp-controller="Home" class="btn btn-sm btn-info">История работы сотрудника</a>
+<a asp-action="ShowQRCode" asp-controller="Home" class="btn btn-sm btn-success">QR Code</a>
+
+
+<table class="table table-sm table-striped table-bordered m-2">
+    <thead>
+        <tr>
+            <th>IdEmployee</th>
+            <th>FirstNameEmployee</th>
+            <th>SecondNameEmployee</th>
+            <th>MiddleNameEmployee</th>
+            <th>MailEmployee</th>
+            <th>PasswordEmployee</th>
+            <th>PhoneEmployee</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.IdEmployee</td>
+                <td>@r.FirstNameEmployee</td>
+                <td>@r.SecondNameEmployee</td>
+                <td>@r.MiddleNameEmployee</td>
+                <td>@r.MailEmployee</td>
+                <td>@r.PasswordEmployee</td>
+                <td>@r.PhoneEmployee</td>
+                <td>
+                    <a asp-action="UpdateEmployee" asp-route-id="@r.IdEmployee">
+                        <img src="/icons/updateicon.png" width="40" height="40" />
+                    </a>
+                </td>
+                <td>
+                    <form asp-action="DeleteEmployees" method="post">
+                        <input type="hidden" value="@r.IdEmployee" name="IdEmployee" />
+                        <input type="image" src="/icons/deleteicon.png" width="40" height="40" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

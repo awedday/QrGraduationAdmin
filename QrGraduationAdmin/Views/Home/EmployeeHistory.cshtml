@@ -1,0 +1,41 @@
+﻿@model List<QrGraduationAdmin.Models.History>
+
+@{
+    ViewData["Title"] = "Результаты поиска историй";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form method="post" action="@Url.Action("SearchHistoriesBySecondName", "Home")">
+    <label for="secondName">Введите фамилию:</label>
+    <input type="text" id="secondName" name="secondName" required>
+    <button type="submit">Найти</button>
+</form>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Истории</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+                <th>ID Сотрудника</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var history in Model)
+            {
+                <tr>
+                    <td>@history.IdHistory</td>
+                    <td>@history.DateStartHistory</td>
+                    <td>@history.DateFinishHistory</td>
+                    <td>@history.EmployeeId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Истории по указанной фамилии не найдены.</p>
+}

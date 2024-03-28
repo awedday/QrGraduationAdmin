@@ -1,0 +1,37 @@
+﻿@model IEnumerable<QrGraduationAdmin.Models.Employee>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_Layout"; ViewBag.Title = "All Users";
+}
+<h2>EmployeeView</h2>
+<a asp-action="AddEmployees" class="btn btn-sm btn-primary">Добавить сотрудника</a>
+<a asp-action="GetEmployees" class="btn btn-sm btn-secondary">Получить сотрудников</a>
+<table class="table table-sm table-striped table-bordered m-2">
+    <thead></thead>
+    <tbody>
+        @foreach(var r in Model)
+        {
+            <tr>
+                <td>@r.IdEmployee</td>
+                <td>@r.FirstNameEmployee</td>
+                <td>@r.SecondNameEmployee</td>
+                <td>@r.MiddleNameEmployee</td>
+                <td>@r.MailEmployee</td>;
+                <td>@r. PasswordEmployee</td>
+                <td>@r.PhoneEmployee</td>
+                <td>
+                    <a asp-action="UpdateEmployee" asp-route-id="@r.IdEmployee">
+                        <img src="~/css/icons/update.jpg">
+                    </a>
+                </td>
+                <td>
+                    <form asp-action="DeleteUsers" method="post">
+                        <input type="hidden" value="@r.IdEmployee" name="IdEmployee"/>
+                        <input type="image" src="~/css/icons/close.jpg"/>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

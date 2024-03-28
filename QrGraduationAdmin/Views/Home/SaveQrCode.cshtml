@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Сохранение QR-кода";
+}
+
+<h2>Сохранение QR-кода</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.QRCodeImagePath))
+{
+    <div>
+        <h3>Сохраненный QR-код:</h3>
+        <img src="@ViewBag.QRCodeImagePath" alt="Сохраненный QR-код">
+    </div>
+}
+else
+{
+    <p>Изображение QR-кода не найдено.</p>
+}
