@@ -48,6 +48,12 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "Microsoft.CodeAnalysis.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.3.4, )"
+            },
             "Microsoft.CodeAnalysis.NetAnalyzers": {
               "suppressParent": "All",
               "target": "Package",
