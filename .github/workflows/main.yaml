@@ -1,4 +1,4 @@
-name: ASP.NET Core CI
+name: C# Syntax Check
 
 on:
   push:
@@ -15,16 +15,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x' # Укажите нужную версию .NET Core SDK
+    - name: Install Mono
+      run: sudo apt-get install -y mono-complete
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Compile C# files
+      run: mcs -t:library *.cs
 
-    - name: Build project
-      run: dotnet build --configuration Release
-
-    - name: Run Roslyn Analyzer
-      run: dotnet analyze
+    - name: Syntax Check
+      run: csc -target:library -warn:4 *.cs
