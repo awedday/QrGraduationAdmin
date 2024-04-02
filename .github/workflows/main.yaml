@@ -24,17 +24,15 @@ jobs:
       run: dotnet restore
 
     - name: Build project
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release > build.log
 
     - name: Check for syntax errors
       run: |
-        # Запускаем dotnet build, сохраняя вывод в файл
-        dotnet build --configuration Release > build.log
-        
-        # Ищем строки, содержащие "error" в файле с выводом сборки
-        if grep -iq 'error' build.log; then
-          echo "Syntax errors found!"
+        # Ищем строки, содержащие "error" и "warning" в файле с выводом сборки
+        if grep -iq 'error\|warning' build.log; then
+          echo "Syntax errors or warnings found:"
+          grep -i 'error\|warning' build.log
           exit 1
         else
-          echo "No syntax errors found."
+          echo "No syntax errors or warnings found."
         fi
