@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cz/lWqyLyyhKnjjolurjNseS8UH6q151qmDtyJAoR3gQbVcqyh8Wf09iGZCjPOcWuwkSQYyBkBZeKF/1JGtooQ==",
+  "dgSpecHash": "UV5qF4Zalw6XV+OqgJOkRlcpj4H0TMfvTD65SIp7ubY8FPwVwr5sC5OoOvmSDav2WjMNmINLtCbJigZBMN/flw==",
   "success": true,
   "projectFilePath": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\QrGraduationAdmin.csproj",
   "expectedPackageFiles": [
@@ -73,6 +73,7 @@
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.csharp.features\\4.0.0\\microsoft.codeanalysis.csharp.features.4.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\4.0.0\\microsoft.codeanalysis.csharp.workspaces.4.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.features\\4.0.0\\microsoft.codeanalysis.features.4.0.0.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.netanalyzers\\6.0.0\\microsoft.codeanalysis.netanalyzers.6.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.0\\microsoft.codeanalysis.razor.6.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.scripting.common\\4.0.0\\microsoft.codeanalysis.scripting.common.4.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.0.0\\microsoft.codeanalysis.workspaces.common.4.0.0.nupkg.sha512",
@@ -212,5 +213,16 @@
     "C:\\Users\\HONOR\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "QrGraduationAdmin зависит от Microsoft.CodeAnalysis.NetAnalyzers (>= 5.0.6), но Microsoft.CodeAnalysis.NetAnalyzers 5.0.6 не найден. Использовано наилучшее приближенное соответствие Microsoft.CodeAnalysis.NetAnalyzers 6.0.0.",
+      "libraryId": "Microsoft.CodeAnalysis.NetAnalyzers",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
