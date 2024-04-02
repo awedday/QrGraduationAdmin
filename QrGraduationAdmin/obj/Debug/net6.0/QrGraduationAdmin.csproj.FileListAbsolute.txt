@@ -231,3 +231,6 @@ D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6
 D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\QRCoder.dll
+D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\DocumentFormat.OpenXml.Framework.dll
+D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\bin\Debug\net6.0\System.IO.Packaging.dll

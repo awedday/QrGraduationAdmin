@@ -5,10 +5,14 @@
 }
 
 <h2>Все пользователи</h2>
+<form method="post" action="@Url.Action("Logout", "Home")">
+    <button type="submit">Выйти</button>
+</form>
 <a asp-action="AddEmployee" class="btn btn-sm btn-primary">Добавить пользователя</a>
 <a asp-action="SearchHistory" asp-controller="Home" class="btn btn-sm btn-info">История работы сотрудника</a>
 <a asp-action="ShowQRCode" asp-controller="Home" class="btn btn-sm btn-success">QR Code</a>
-
+<a asp-action="ExportEmployeesToExcel" method="post" type="submit" class="btn btn-primary">Export to Excel</>
+</a>
 
 <table class="table table-sm table-striped table-bordered m-2">
     <thead>

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "eG43sHpW3EJd6SnjDpvTasDPYKGrYoHXBI19Zs4p8eJ1TnX5ka+tjIWuL55Gax7vKQ5M75wMjcsCoYnGIMg6dw==",
+  "dgSpecHash": "cz/lWqyLyyhKnjjolurjNseS8UH6q151qmDtyJAoR3gQbVcqyh8Wf09iGZCjPOcWuwkSQYyBkBZeKF/1JGtooQ==",
   "success": true,
   "projectFilePath": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\QrGraduationAdmin.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HONOR\\.nuget\\packages\\documentformat.openxml\\3.0.1\\documentformat.openxml.3.0.1.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\documentformat.openxml.framework\\3.0.1\\documentformat.openxml.framework.3.0.1.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\epplus\\7.0.10\\epplus.7.0.10.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",
@@ -157,6 +159,7 @@
     "C:\\Users\\HONOR\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",

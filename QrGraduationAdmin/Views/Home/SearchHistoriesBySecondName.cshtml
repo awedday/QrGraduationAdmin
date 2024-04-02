@@ -1,4 +1,4 @@
-﻿@using Newtonsoft.Json;
+﻿﻿@using Newtonsoft.Json;
 @model List<QrGraduationAdmin.Models.History>
 
 @{
@@ -10,26 +10,13 @@
 <form method="post" action="@Url.Action("SearchHistoriesBySecondName", "Home")">
     <label for="secondName">Введите фамилию:</label>
     <input type="text" id="secondName" name="secondName" required>
-    <br>
-    <label for="startDate">Начальная дата:</label>
-    <input type="date" id="startDate" name="startDate" required>
-    <br>
-    <label for="endDate">Конечная дата:</label>
-    <input type="date" id="endDate" name="endDate" required>
-    <br>
+    
     <button type="submit">Найти</button>
 </form>
 
 
 @if (Model != null && Model.Count > 0)
 {
-    <div>
-        <form method="post" action="@Url.Action("ExportToExcel", "Home")">
-            <input type="hidden" name="historyList" value="@JsonConvert.SerializeObject(Model)" />
-            <button type="submit" class="btn btn-success">Экспорт в Excel</button>
-        </form>
-        <a href="@Url.Action("ExportToWord", "Home")" class="btn btn-primary">Экспорт в Word</a>
-    </div>
     <table class="table">
         <thead>
             <tr>

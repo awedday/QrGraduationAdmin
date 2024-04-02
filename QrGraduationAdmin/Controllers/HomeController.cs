@@ -14,6 +14,10 @@ using System.Drawing;
 
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Hosting;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.InkML;
 
 
 namespace QrGraduationAdmin.Controllers
@@ -130,37 +134,74 @@ namespace QrGraduationAdmin.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-        public async Task<IActionResult> EmployeeHistory(int id)
+        [HttpPost]
+        public async Task<IActionResult> Login(string login, string password)
         {
-            List<History> historyList = new List<History>();
+            // Здесь необходимо реализовать аутентификацию пользователя
+            // Примерный код для аутентификации пользователя
+            var user = await GetUserByLoginAndPassword(login, password);
+
+            if (user == null)
+            {
+                return NotFound("Пользователь не найден");
+            }
+
+            // Проверяем, является ли пользователь администратором по логину
+            if (user.MailEmployee == "benzenkoAP@itimportant.ru" && user.PasswordEmployee == password)
+            {
+                HttpContext.Session.SetString("UserId", user.IdEmployee.ToString());
+
+                // В данном месте вы можете создать cookie или токен для аутентифицированного пользователя
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Unauthorized("Доступ запрещен. Только администраторы могут войти.");
+            }
+        }
+        public IActionResult Logout()
+        {
+            // Удалите данные из сессии при выходе
+            HttpContext.Session.Remove("UserId");
+
+            return RedirectToAction("Login");
+        }
+
+        private async Task<Employee> GetUserByLoginAndPassword(string login, string password)
+        {
+            Employee user = null;
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync($"https://localhost:7062/api/Histories/Employee/{id}"))
+                using (var response = await httpClient.GetAsync($"https://localhost:7062/api/Employees/login?login={login}&password={password}"))
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    if (response.IsSuccessStatusCode)
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
-                        historyList = JsonConvert.DeserializeObject<List<History>>(apiResponse);
-                    }
-                    else
-                    {
-                        ViewBag.StatusCode = response.StatusCode;
+                        user = JsonConvert.DeserializeObject<Employee>(apiResponse);
                     }
                 }
             }
-            return View(historyList);
+            return user;
         }
-        [HttpPost]
-        public async Task<IActionResult> SearchHistoriesBySecondName(string secondName, string startDate, string endDate)
+
+    
+
+        // Для разметки представления авторизации вы можете использовать форму входа:
+        public IActionResult Login()
+        {
+            return View();
+        }
+    
+
+    [HttpPost]
+        public async Task<IActionResult> SearchHistoriesBySecondName(string secondName)
         {
             List<History> historyList = new List<History>();
 
             using (var httpClient = new HttpClient())
             {
                 // Формируем URI запроса с параметрами фильтрации
-                string requestUri = $"https://localhost:7062/api/Histories/BySecondName/{secondName}?startDate={startDate}&endDate={endDate}";
+                string requestUri = $"https://localhost:7062/api/Histories/BySecondName/{secondName}";
 
                 // Отправляем запрос на сервер
                 using (var response = await httpClient.GetAsync(requestUri))
@@ -182,59 +223,6 @@ namespace QrGraduationAdmin.Controllers
             return View(historyList);
         }
 
-
-        public IActionResult ExportToExcel(List<History> historyList)
-        {
-            using (var package = new ExcelPackage())
-            {
-                var worksheet = package.Workbook.Worksheets.Add("History");
-
-                // Заголовки столбцов
-                worksheet.Cells[1, 1].Value = "Дата начала";
-                worksheet.Cells[1, 2].Value = "Дата окончания";
-
-                // Данные
-                for (int i = 0; i < historyList.Count; i++)
-                {
-                    worksheet.Cells[i + 2, 1].Value = historyList[i].DateStartHistory;
-                    worksheet.Cells[i + 2, 2].Value = historyList[i].DateFinishHistory;
-                }
-
-                // Сохранение файла
-                var stream = new MemoryStream();
-                package.SaveAs(stream);
-
-                return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "History.xlsx");
-            }
-        }
-
-
-        public IActionResult ExportToWord()
-        {
-            var historyList = GetHistoryData(); // Получаем данные истории, замените на ваш метод получения данных
-
-            // Используйте класс Application из пространства имен Microsoft.Office.Interop.Word
-            var wordApp = new Word.Application();
-            var doc = wordApp.Documents.Add();
-
-            var para = doc.Paragraphs.Add();
-            para.Range.Text = "History";
-
-            para.Range.InsertParagraphAfter();
-
-            foreach (var history in historyList)
-            {
-                para.Range.Text = $"Пришел: {history.DateStartHistory}, Ушел: {history.DateFinishHistory}";
-                para.Range.InsertParagraphAfter();
-            }
-
-            var stream = new MemoryStream();
-            doc.SaveAs2(stream);
-            doc.Close();
-            wordApp.Quit();
-
-            return File(stream.ToArray(), "application/msword", "History.docx");
-        }
         private List<History> GetHistoryData()
         {
             // Замените этот метод на ваш метод получения данных истории
@@ -364,6 +352,61 @@ namespace QrGraduationAdmin.Controllers
             }
         }
 
+        public async Task<List<Employee>> AllUsersForExcel()
+        {
+            List<Employee> userListAll = new List<Employee>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://localhost:7062/api/Employees"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    userListAll = JsonConvert.DeserializeObject<List<Employee>>(apiResponse);
+                }
+            }
+            return userListAll;
+        }
+
+        public async Task<IActionResult> ExportEmployeesToExcel()
+        {
+            List<Employee> employees = new List<Employee>();
+
+            // Здесь получите список всех работников из базы данных или другого источника
+            // Например:
+            employees = await AllUsersForExcel();
+
+            // Создаем пакет Excel
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Employees");
+
+                // Устанавливаем заголовки столбцов
+                worksheet.Cells[1, 1].Value = "IdEmployee";
+                worksheet.Cells[1, 2].Value = "FirstNameEmployee";
+                worksheet.Cells[1, 3].Value = "SecondNameEmployee";
+                worksheet.Cells[1, 4].Value = "MiddleNameEmployee";
+                worksheet.Cells[1, 5].Value = "MailEmployee";
+                worksheet.Cells[1, 6].Value = "PhoneEmployee";
+
+                // Заполняем данные
+                int row = 2;
+                foreach (var employee in employees)
+                {
+                    worksheet.Cells[row, 1].Value = employee.IdEmployee;
+                    worksheet.Cells[row, 2].Value = employee.FirstNameEmployee;
+                    worksheet.Cells[row, 3].Value = employee.SecondNameEmployee;
+                    worksheet.Cells[row, 4].Value = employee.MiddleNameEmployee;
+                    worksheet.Cells[row, 5].Value = employee.MailEmployee;
+                    worksheet.Cells[row, 6].Value = employee.PhoneEmployee;
+                    row++;
+                }
+
+                // Сохраняем файл
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+
+                return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Employees.xlsx");
+            }
+        }
 
 
 
