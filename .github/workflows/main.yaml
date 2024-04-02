@@ -26,3 +26,15 @@ jobs:
     - name: Build project
       run: dotnet build --configuration Release
 
+    - name: Check for syntax errors
+      run: |
+        # Запускаем dotnet build, сохраняя вывод в файл
+        dotnet build --configuration Release > build.log
+        
+        # Ищем строки, содержащие "error" в файле с выводом сборки
+        if grep -iq 'error' build.log; then
+          echo "Syntax errors found!"
+          exit 1
+        else
+          echo "No syntax errors found."
+        fi
