@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UIvk0yTwARwqn54BY+4I4HzJUZrDPcQYJmcV7HSiy4vPCdC0fpPYs4S4Ztsol3v+NrFFm1TS3Pf3WkJeH187Ag==",
+  "dgSpecHash": "UV5qF4Zalw6XV+OqgJOkRlcpj4H0TMfvTD65SIp7ubY8FPwVwr5sC5OoOvmSDav2WjMNmINLtCbJigZBMN/flw==",
   "success": true,
   "projectFilePath": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\QrGraduationAdmin.csproj",
   "expectedPackageFiles": [
@@ -66,7 +66,7 @@
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.build.framework\\17.3.2\\microsoft.build.framework.17.3.2.nupkg.sha512",
-    "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.4\\microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.analyzerutilities\\3.3.0\\microsoft.codeanalysis.analyzerutilities.3.3.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
     "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.0\\microsoft.codeanalysis.csharp.4.0.0.nupkg.sha512",

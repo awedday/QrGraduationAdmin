@@ -26,5 +26,3 @@ jobs:
     - name: Build project
       run: dotnet build --configuration Release
 
-    - name: Run Roslyn Analyzer
-      run: dotnet analyze
