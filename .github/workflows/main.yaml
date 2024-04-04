@@ -2,37 +2,26 @@ name: ASP.NET Core CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main  # Здесь укажите вашу основную ветку
 
 jobs:
-  build:
-
+  check_style:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x' # Укажите нужную версию .NET Core SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'  # Укажите актуальную версию .NET SDK
 
-    - name: Restore dependencies
-      run: dotnet restore
+      - name: Install StyleCopAnalyzers
+        run: dotnet add OP.PRACTICAL_WORK_7/OP.PRACTICAL_WORK_7/OP.PRACTICAL_WORK_7.csproj package StyleCop.Analyzers --version 1.2.0-beta.556
 
-    - name: Build project
-      run: dotnet build --configuration Release > build.log
-
-    - name: Check for syntax errors
-      run: |
-        # Ищем строки, содержащие "error" и "warning" в файле с выводом сборки
-        if grep -iq 'error\|warning' build.log; then
-          echo "Syntax errors or warnings found:"
-          grep -i 'error\|warning' build.log
-          exit 1
-        else
-          echo "No syntax errors or warnings found."
-        fi
+      - name: Check code style
+        run: |
+          cd OP.PRACTICAL_WORK_7/OP.PRACTICAL_WORK_7
+          dotnet build /p:StyleCopEnabled=true /p:StyleCopConfig=.stylecop.json
