@@ -19,9 +19,9 @@ jobs:
           dotnet-version: '6.0.x'  # Укажите актуальную версию .NET SDK
 
       - name: Install StyleCopAnalyzers
-        run: dotnet add D:/study/2semester/graduation/QrGraduationAdmin/QrGraduationAdmin/QrGraduationAdmin.csproj package StyleCop.Analyzers --version 1.2.0-beta.556
+        run: dotnet add D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\QrGraduationAdmin.csproj package StyleCop.Analyzers --version 1.2.0-beta.556
 
       - name: Check code style
         run: |
-          cd D:/study/2semester/graduation/QrGraduationAdmin/QrGraduationAdmin/QrGraduationAdmin.csproj
+          cd D:\study\2semester\graduation\QrGraduationAdmin\QrGraduationAdmin\QrGraduationAdmin.csproj
           dotnet build /p:StyleCopEnabled=true /p:StyleCopConfig=.stylecop.json
