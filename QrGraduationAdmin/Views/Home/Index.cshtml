@@ -1,56 +1,81 @@
 ﻿@model IEnumerable<QrGraduationAdmin.Models.Employee>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    Layout = "_Layout"; ViewBag.Title = "All Users";
+    Layout = "_Layout";
+    ViewBag.Title = "All Users";
 }
 
-<h2>Все пользователи</h2>
-<form method="post" action="@Url.Action("Logout", "Home")">
-    <button type="submit">Выйти</button>
-</form>
-<a asp-action="AddEmployee" class="btn btn-sm btn-primary">Добавить пользователя</a>
-<a asp-action="SearchHistory" asp-controller="Home" class="btn btn-sm btn-info">История работы сотрудника</a>
-<a asp-action="ShowQRCode" asp-controller="Home" class="btn btn-sm btn-success">QR Code</a>
-<a asp-action="ExportEmployeesToExcel" method="post" type="submit" class="btn btn-primary">Export to Excel</>
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+      
 
-<table class="table table-sm table-striped table-bordered m-2">
-    <thead>
-        <tr>
-            <th>IdEmployee</th>
-            <th>FirstNameEmployee</th>
-            <th>SecondNameEmployee</th>
-            <th>MiddleNameEmployee</th>
-            <th>MailEmployee</th>
-            <th>PasswordEmployee</th>
-            <th>PhoneEmployee</th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var r in Model)
-        {
-            <tr>
-                <td>@r.IdEmployee</td>
-                <td>@r.FirstNameEmployee</td>
-                <td>@r.SecondNameEmployee</td>
-                <td>@r.MiddleNameEmployee</td>
-                <td>@r.MailEmployee</td>
-                <td>@r.PasswordEmployee</td>
-                <td>@r.PhoneEmployee</td>
-                <td>
-                    <a asp-action="UpdateEmployee" asp-route-id="@r.IdEmployee">
-                        <img src="/icons/updateicon.png" width="40" height="40" />
-                    </a>
-                </td>
-                <td>
-                    <form asp-action="DeleteEmployees" method="post">
-                        <input type="hidden" value="@r.IdEmployee" name="IdEmployee" />
-                        <input type="image" src="/icons/deleteicon.png" width="40" height="40" />
-                    </form>
-                </td>
-            </tr>
+        .table-container {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
         }
-    </tbody>
-</table>
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9); /* Цвет фона таблицы с прозрачностью */
+        }
+
+       
+
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h2>Все пользователи</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Почта</th>
+                    <th>Телефон</th>
+                    <th>Изменить</th>
+                    <th>Обновить</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.IdEmployee</td>
+                        <td>@r.SecondNameEmployee</td>
+                        <td>@r.FirstNameEmployee</td>
+                        <td>@r.MiddleNameEmployee</td>
+                        <td>@r.MailEmployee</td>
+                        <td>@r.PhoneEmployee</td>
+                        
+                        <td>
+                            <a asp-action="UpdateEmployee" asp-route-id="@r.IdEmployee">
+                                <img src="/icons/updateicon.png" width="40" height="40" />
+                            </a>
+                        </td>
+                        <td>
+                            <form asp-action="DeleteEmployees" method="post">
+                                <input type="hidden" value="@r.IdEmployee" name="IdEmployee" />
+                                <input type="image" src="/icons/deleteicon.png" width="40" height="40" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

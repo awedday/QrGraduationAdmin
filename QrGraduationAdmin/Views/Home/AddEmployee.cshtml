@@ -6,28 +6,28 @@
 <h2>Add a Reservation <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
 <form asp-action="AddEmployee" method="post">
     <div class="form-group">
-        <label for="Name">FirstNameEmployee:</label>
+        <label for="Name">Имя:</label>
         <input class="form-control" name="FirstNameEmployee" />
     </div>
     <div class="form-group">
-        <label for="StartLocation">SecondNameEmployee:</label>
+        <label for="StartLocation">Фамилия:</label>
         <input class="form-control" name="SecondNameEmployee" />
     </div>
     <div class="form-group">
-        <label for="StartLocation">MiddleNameEmployee:</label>
+        <label for="StartLocation">Отчество:</label>
         <input class="form-control" name="MiddleNameEmployee" />
     </div>
     <div class="form-group">
-        <label for="StartLocation">MailEmployee:</label>
+        <label for="StartLocation">Почта:</label>
         <input class="form-control" name="MailEmployee" />
     </div>
     <div class="form-group">
-        <label for="StartLocation">PasswordEmployee:</label>
-        <input class="form-control" name="PasswordEmployee" />
+        <label for="StartLocation">Пароль:</label>
+        <input class="form-control" name="PasswordEmployee" minlength="7" />
     </div>
     <div class="form-group">
-        <label for="StartLocation">PhoneEmployee:</label>
-        <input class="form-control" name="PhoneEmployee" />
+        <label for="StartLocation">Телефон:</label>
+        <input class="form-control" name="PhoneEmployee"  />
     </div>
     
     <div class="text-center panel-body">
@@ -43,13 +43,13 @@
     <table class="table table-sm table-striped table-bordered m-2">
         <thead>
             <tr>
-                <th>IdEmployee</th>
-                <th>FirstNameEmployee</th>
-                <th>SecondNameEmployee</th>
-                <th>MiddleNameEmployee</th>
-                <th>MailEmployee</th>
-                <th>PasswordEmployee</th>
-                <th>PhoneEmployee</th>
+                <th>Код</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Почта</th>
+                <th>Пароль</th>
+                <th>Телефон</th>
             </tr>
         </thead>
         <tbody>

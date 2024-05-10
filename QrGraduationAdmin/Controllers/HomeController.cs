@@ -191,9 +191,9 @@ namespace QrGraduationAdmin.Controllers
         {
             return View();
         }
-    
 
-    [HttpPost]
+
+        [HttpPost]
         public async Task<IActionResult> SearchHistoriesBySecondName(string secondName)
         {
             List<History> historyList = new List<History>();
@@ -220,8 +220,38 @@ namespace QrGraduationAdmin.Controllers
                 }
             }
 
+            // Сортируем истории по дате начала
+            historyList.Sort((x, y) => DateTime.Compare(DateTime.Parse(x.DateStartHistory), DateTime.Parse(y.DateStartHistory)));
+
+            // Проходим по историям, проверяем разницу между финишем текущей и стартом следующей записи
+            for (int i = 0; i < historyList.Count - 1; i++)
+            {
+                var currentHistory = historyList[i];
+                var nextHistory = historyList[i + 1];
+
+                // Преобразуем строки дат в объекты DateTime
+                DateTime currentEnd;
+                DateTime nextStart;
+                if (DateTime.TryParse(currentHistory.DateFinishHistory, out currentEnd) &&
+                    DateTime.TryParse(nextHistory.DateStartHistory, out nextStart))
+                {
+                    TimeSpan officeTime = nextStart - currentEnd;
+                    if (officeTime.TotalHours > 2)
+                    {
+                        currentHistory.ExceededMaxTime = true;
+                    }
+                }
+                else if (DateTime.TryParse(currentHistory.DateStartHistory, out DateTime currentStart) &&
+                         (string.IsNullOrEmpty(currentHistory.DateFinishHistory) || !DateTime.TryParse(currentHistory.DateFinishHistory, out _)))
+                {
+                    currentHistory.ExceededMaxTime = true;
+                }
+            }
+
+            // Возвращаем представление с данными об историях
             return View(historyList);
         }
+
 
         private List<History> GetHistoryData()
         {
@@ -333,16 +363,14 @@ namespace QrGraduationAdmin.Controllers
                     // Считываем содержимое ответа в байтовый массив
                     byte[] qrCodeBytes = await response.Content.ReadAsByteArrayAsync();
 
-                    // Генерируем уникальное имя для файла
-                    var fileName = Guid.NewGuid().ToString() + ".png";
+                    // Возвращаем изображение QR-кода как поток
+                    var qrCodeStream = new MemoryStream(qrCodeBytes);
 
-                    // Сохраняем файл на сервере
-                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "QRImages", fileName);
-                    System.IO.File.WriteAllBytes(filePath, qrCodeBytes);
+                    // Определяем MIME-тип изображения
+                    var mimeType = "image/png"; // Измените, если тип изображения отличается
 
-                    // Возвращаем путь к сохраненному файлу
-                    ViewBag.QRCodeImagePath = "/QRImages/" + fileName;
-                    return View();
+                    // Возвращаем файл пользователю
+                    return File(qrCodeStream, mimeType, "QRCode.png");
                 }
                 else
                 {
@@ -351,6 +379,7 @@ namespace QrGraduationAdmin.Controllers
                 }
             }
         }
+
 
         public async Task<List<Employee>> AllUsersForExcel()
         {
@@ -407,7 +436,83 @@ namespace QrGraduationAdmin.Controllers
                 return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Employees.xlsx");
             }
         }
+        private TimeSpan MaxOfficeTime = TimeSpan.FromHours(2); // Максимальное время пребывания в офисе
 
+        private TimeSpan GetTotalOfficeTime(DateTime start, DateTime end)
+        {
+            TimeSpan totalOfficeTime = end - start;
+            return totalOfficeTime;
+        }
+        public async Task<IActionResult> AllHistories()
+        {
+            List<History> historyList = new List<History>();
+
+            using (var httpClient = new HttpClient())
+            {
+                // Отправляем запрос на сервер для получения всех историй
+                using (var response = await httpClient.GetAsync("https://localhost:7062/api/Histories"))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Если запрос успешен, получаем список всех историй
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        historyList = JsonConvert.DeserializeObject<List<History>>(apiResponse);
+
+                        // Для каждой истории загрузим информацию о сотруднике
+                        foreach (var history in historyList)
+                        {
+                            using (var employeeResponse = await httpClient.GetAsync($"https://localhost:7062/api/Employees/{history.EmployeeId}"))
+                            {
+                                if (employeeResponse.IsSuccessStatusCode)
+                                {
+                                    string employeeApiResponse = await employeeResponse.Content.ReadAsStringAsync();
+                                    Employee employee = JsonConvert.DeserializeObject<Employee>(employeeApiResponse);
+
+                                    // Установим фамилию сотрудника вместо EmployeeId
+                                    history.EmployeeLastName = $"{employee.SecondNameEmployee} {employee.FirstNameEmployee} {employee.MiddleNameEmployee}";
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Если произошла ошибка, устанавливаем сообщение об ошибке
+                        ViewBag.ErrorMessage = "Истории не найдены или произошла ошибка.";
+                    }
+                }
+            }
+
+            // Сортируем истории по дате старта
+            historyList.Sort((x, y) => DateTime.Compare(DateTime.Parse(x.DateStartHistory), DateTime.Parse(y.DateStartHistory)));
+
+            // Проходим по историям, проверяем разницу между финишем текущей и стартом следующей записи
+            for (int i = 0; i < historyList.Count - 1; i++)
+            {
+                var currentHistory = historyList[i];
+                var nextHistory = historyList[i + 1];
+
+                // Преобразуем строки дат в объекты DateTime
+                DateTime currentEnd;
+                DateTime nextStart;
+                if (DateTime.TryParse(currentHistory.DateFinishHistory, out currentEnd) &&
+                    DateTime.TryParse(nextHistory.DateStartHistory, out nextStart))
+                {
+                    TimeSpan officeTime = nextStart - currentEnd;
+                    if (officeTime.TotalHours > 2)
+                    {
+                        currentHistory.ExceededMaxTime = true;
+                    }
+                }
+                else if (DateTime.TryParse(currentHistory.DateStartHistory, out DateTime currentStart) &&
+                         (string.IsNullOrEmpty(currentHistory.DateFinishHistory) || !DateTime.TryParse(currentHistory.DateFinishHistory, out _)))
+                {
+                    currentHistory.ExceededMaxTime = true;
+                }
+            }
+
+            // Возвращаем представление с данными об историях
+            return View(historyList);
+        }
 
 
         public IActionResult Privacy()

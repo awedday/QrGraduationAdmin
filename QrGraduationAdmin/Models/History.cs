@@ -9,6 +9,7 @@ namespace QrGraduationAdmin.Models
         public string DateStartHistory { get; set; } = null!;
         public string? DateFinishHistory { get; set; }
         public int EmployeeId { get; set; }
-
+        public bool ExceededMaxTime { get; set; }
+        public string EmployeeLastName { get; set; } 
     }
 }

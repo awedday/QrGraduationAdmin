@@ -15,6 +15,6 @@ namespace QrGraduationAdmin.Models
         public string PasswordEmployee { get; set; } = null!;
         public string PhoneEmployee { get; set; } = null!;
 
-       
+
     }
 }

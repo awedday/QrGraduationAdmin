@@ -1,0 +1,87 @@
+﻿@model List<History>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <a asp-action="SearchHistory" asp-controller="Home" class="btn btn-sm btn-info">История работы сотрудника</a>
+
+    <title>Все истории</title>
+    <style>
+
+
+        .table-container {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9); /* Цвет фона таблицы с прозрачностью */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Все истории</h1>
+    @if (Model != null && Model.Any())
+    {
+        <table border="1">
+            <tr>
+                <th>Номер</th>
+                <th>ФИО</th>
+                <th>Пришел</th>
+                <th>Ушел</th>
+                <th>Нарушения</th>
+            </tr>
+            @foreach (var history in Model)
+            {
+                <tr>
+                    <td>@history.IdHistory</td>
+                    <td>@history.EmployeeLastName</td>
+                    <td>@history.DateStartHistory</td>
+                    <td>@history.DateFinishHistory</td>
+                    <td>
+                        @if (history.ExceededMaxTime)
+                        {
+                            <img src="/icons/erorrmessage.png" width="60" height="60" title="НАРУШЕНИЕ - написать руководителю" onclick="sendEmail()" />
+                        }
+                        else
+                        {
+                            <img src="/icons/correcttime.jpg" width="60" height="60" />
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <p>No histories found.</p>
+    }
+
+    <script>
+        function sendEmail() {
+            var recipient = 'recipient@example.com';
+            var subject = 'Временное нарушение сотрудника Вашего отдела';
+            var body = 'Ваш сотрдник выходил дольше чем на 2 часа';
+
+            // Кодируем специальные символы в URI
+            recipient = encodeURIComponent(recipient);
+            subject = encodeURIComponent(subject);
+            body = encodeURIComponent(body);
+
+            // Формируем ссылку для открытия почтового клиента
+            var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+
+            // Открываем почтовый клиент пользователя
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>

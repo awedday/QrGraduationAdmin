@@ -1,31 +1,40 @@
-﻿
-@{
-    ViewData["Title"] = "QR Code";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-<h2>QR Code</h2>
-@using (Html.BeginForm("ChangeQRText", "Home", FormMethod.Post))
-{
-    <div class="form-group">
-        <label for="newText">Новый текст QR-кода:</label>
-        <input type="text" id="newText" name="newText" class="form-control" required>
+</head>
+<body>
+    <div class="container">
+        <h2>QR Code</h2>
+        @using (Html.BeginForm("ChangeQRText", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="newText">Новый текст QR-кода:</label>
+                <input type="text" id="newText" name="newText" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Изменить текст QR-кода</button>
+        }
+
+        <div>
+            <img src="@Url.Action("GetQRCode", "Home")" alt="QR Code" height="400" width="400">
+        </div>
+        <div class="buttons">
+            <form method="post" action="@Url.Action("SaveQRCode", "Home")">
+                <button type="submit" class="btn btn-primary">Сохранить QR-код</button>
+            </form>
+        </div>
+
+        @if (ViewBag.QRCodeImagePath != null)
+        {
+            <div>
+                <h3>Сохраненный QR-код:</h3>
+                <img src="@ViewBag.QRCodeImagePath" alt="Saved QR Code">
+            </div>
+        }
     </div>
-    <button type="submit" class="btn btn-primary">Изменить текст QR-кода</button>
-}
-
-<div>
-    <img src="@Url.Action("GetQRCode", "Home")" alt="QR Code">
-</div>
-<div>
-    <form method="post" action="@Url.Action("SaveQRCode", "Home")">
-        <button type="submit" class="btn btn-primary">Сохранить QR-код</button>
-    </form>
-</div>
-
-@if (ViewBag.QRCodeImagePath != null)
-{
-    <div>
-        <h3>Сохраненный QR-код:</h3>
-        <img src="@ViewBag.QRCodeImagePath" alt="Saved QR Code">
-    </div>
-}
+</body>
+</html>

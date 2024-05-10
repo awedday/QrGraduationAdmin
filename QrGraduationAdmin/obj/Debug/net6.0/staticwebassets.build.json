@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SIIlKIMCZgOKZIJRVMyzQpIhG2+J+xFru28en5y6rwk=",
+  "Hash": "fOEJqVyif9Gdivi0IpjeV8Id/uiemhOtjk/mbMILITQ=",
   "Source": "QrGraduationAdmin",
   "BasePath": "_content/QrGraduationAdmin",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\close.jpg",
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\background.png",
       "SourceId": "QrGraduationAdmin",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
       "BasePath": "_content/QrGraduationAdmin",
-      "RelativePath": "icons/close.jpg",
+      "RelativePath": "icons/background.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +99,75 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\icons\\close.jpg"
+      "OriginalItemSpec": "wwwroot\\icons\\background.png"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\call.png",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "icons/call.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\call.png"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\correcttime.jpg",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "icons/correcttime.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\correcttime.jpg"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\dark_overlay .png",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "icons/dark_overlay .png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\dark_overlay .png"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\dark_overlay.png",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "icons/dark_overlay.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\dark_overlay.png"
     },
     {
       "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\deleteicon.png",
@@ -119,12 +187,12 @@
       "OriginalItemSpec": "wwwroot\\icons\\deleteicon.png"
     },
     {
-      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\update.jpg",
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\erorrmessage.png",
       "SourceId": "QrGraduationAdmin",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
       "BasePath": "_content/QrGraduationAdmin",
-      "RelativePath": "icons/update.jpg",
+      "RelativePath": "icons/erorrmessage.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +201,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\icons\\update.jpg"
+      "OriginalItemSpec": "wwwroot\\icons\\erorrmessage.png"
     },
     {
       "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\updateicon.png",
@@ -151,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\updateicon.png"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\written.png",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "icons/written.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\written.png"
     },
     {
       "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\js\\site.js",
@@ -1154,6 +1239,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\QRImages\\350cbf9a-4c71-4f38-8379-294b171a0f15.png"
+    },
+    {
+      "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\QRImages\\5433e094-a73c-400d-967c-c7904a48778b.png",
+      "SourceId": "QrGraduationAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\",
+      "BasePath": "_content/QrGraduationAdmin",
+      "RelativePath": "QRImages/5433e094-a73c-400d-967c-c7904a48778b.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\QRImages\\5433e094-a73c-400d-967c-c7904a48778b.png"
     },
     {
       "Identity": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\QRImages\\63f071a6-b7b2-4c4a-a4a2-d3c2d1f23b97.png",

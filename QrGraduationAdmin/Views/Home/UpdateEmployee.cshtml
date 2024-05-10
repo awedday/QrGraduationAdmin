@@ -3,7 +3,7 @@
     Layout = "_Layout"; ViewBag.Title = "Update a User";
 }
 
-<h2>Update a Employee <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
+<h2>Обновить информацию о сотруднике <a asp-action="Index" class="btn btn-sm btn-secondary">ОТМЕНИТЬ</a></h2>
 <form method="post">
     <div class="form-group">
         <label asp-for="IdEmployee"></label>
@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
         <label asp-for="PasswordEmployee"></label>
-        <input class="form-control" asp-for="PasswordEmployee" />
+        <input class="form-control" asp-for="PasswordEmployee" minlength="6" />
     </div>
     <div class="form-group">
         <label asp-for="PhoneEmployee"></label>
@@ -46,13 +46,13 @@
         <table class="table table-sm table-striped table-bordered m-2">
             <thead>
                 <tr>
-                    <th>IdEmployee</th>
-                    <th>FirstNameEmployee</th>
-                    <th>SecondNameEmployee</th>
-                    <th>MiddleNameEmployee</th>
-                    <th>MailEmployee</th>
-                    <th>PasswordEmployee</th>
-                    <th>PhoneEmployee</th>
+                    <th>Код</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Почта</th>
+                    <th>Пароль</th>
+                    <th>Телефон</th>
                 </tr>
             </thead>
             <tbody>

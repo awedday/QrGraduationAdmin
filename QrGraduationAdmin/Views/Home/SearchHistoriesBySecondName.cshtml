@@ -30,6 +30,16 @@
                 <tr>
                     <td>@history.DateStartHistory</td>
                     <td>@history.DateFinishHistory</td>
+                    <td>
+                        @if (history.ExceededMaxTime)
+                        {
+                            <img src="/icons/erorrmessage.png" width="60" height="60" title="НАРУШЕНИЕ - написать руководителю" onclick="sendEmail()" />
+                        }
+                        else
+                        {
+                            <img src="/icons/correcttime.jpg" width="60" height="60" />
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
@@ -39,3 +49,21 @@ else
 {
     <p>Истории по указанной фамилии и периоду времени не найдены.</p>
 }
+<script>
+    function sendEmail() {
+        var recipient = 'recipient@example.com';
+        var subject = 'Временное нарушение сотрудника Вашего отдела';
+        var body = 'Ваш сотрдник выходил дольше чем на 2 часа';
+
+        // Кодируем специальные символы в URI
+        recipient = encodeURIComponent(recipient);
+        subject = encodeURIComponent(subject);
+        body = encodeURIComponent(body);
+
+        // Формируем ссылку для открытия почтового клиента
+        var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+
+        // Открываем почтовый клиент пользователя
+        window.location.href = mailtoLink;
+    }
+</script>

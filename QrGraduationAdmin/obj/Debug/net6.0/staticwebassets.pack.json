@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\QRImages\\350cbf9a-4c71-4f38-8379-294b171a0f15.png"
     },
     {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\QRImages\\5433e094-a73c-400d-967c-c7904a48778b.png",
+      "PackagePath": "staticwebassets\\QRImages\\5433e094-a73c-400d-967c-c7904a48778b.png"
+    },
+    {
       "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\QRImages\\63f071a6-b7b2-4c4a-a4a2-d3c2d1f23b97.png",
       "PackagePath": "staticwebassets\\QRImages\\63f071a6-b7b2-4c4a-a4a2-d3c2d1f23b97.png"
     },
@@ -25,20 +29,40 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\close.jpg",
-      "PackagePath": "staticwebassets\\icons\\close.jpg"
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\background.png",
+      "PackagePath": "staticwebassets\\icons\\background.png"
+    },
+    {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\call.png",
+      "PackagePath": "staticwebassets\\icons\\call.png"
+    },
+    {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\correcttime.jpg",
+      "PackagePath": "staticwebassets\\icons\\correcttime.jpg"
+    },
+    {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\dark_overlay .png",
+      "PackagePath": "staticwebassets\\icons\\dark_overlay .png"
+    },
+    {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\dark_overlay.png",
+      "PackagePath": "staticwebassets\\icons\\dark_overlay.png"
     },
     {
       "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\deleteicon.png",
       "PackagePath": "staticwebassets\\icons\\deleteicon.png"
     },
     {
-      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\update.jpg",
-      "PackagePath": "staticwebassets\\icons\\update.jpg"
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\erorrmessage.png",
+      "PackagePath": "staticwebassets\\icons\\erorrmessage.png"
     },
     {
       "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\updateicon.png",
       "PackagePath": "staticwebassets\\icons\\updateicon.png"
+    },
+    {
+      "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\icons\\written.png",
+      "PackagePath": "staticwebassets\\icons\\written.png"
     },
     {
       "Id": "D:\\study\\2semester\\graduation\\QrGraduationAdmin\\QrGraduationAdmin\\wwwroot\\js\\site.js",
